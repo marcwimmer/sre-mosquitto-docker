@@ -5,7 +5,9 @@ from pathlib import Path
 
 def post_message_to_slack(text):
     token = eval(Path("/etc/sre/slack.conf").read_text())['token']
-    return requests.post('https://hooks.slack.com/services/' + token, json={"text": text})
+    return requests.post('https://hooks.slack.com/services/' + token, json={
+        "text": text,
+        })
 
 
 def on_message(client, msg, payload=None):
